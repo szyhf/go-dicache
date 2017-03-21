@@ -1,4 +1,4 @@
-package dicache
+package diCache
 
 import (
 	"sync"
