@@ -66,3 +66,9 @@ func (this*MyLazyCache)Get(key MyKeyType)(*MyValType,error){
 ```
 
 > 一般来说重载Get是最重要的，其他的自己看需求酌情处理就好。
+
+## 广告
+
+Gopher要连接Redis？请用：[https://github.com/go-redis/redis](https://github.com/go-redis/redis)
+
+更多源码，点击就送Orz……
