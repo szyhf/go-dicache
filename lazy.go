@@ -66,3 +66,11 @@ func (this *LazyCache) Put(key, val interface{}) {
 	elem.val = val
 	close(elem.ready)
 }
+
+// 存在性判断
+func (this *LazyCache) IsExist(key interface{}) bool {
+	this.mx.Lock()
+	_, ok := this.memo[key]
+	this.mx.Unlock()
+	return ok
+}

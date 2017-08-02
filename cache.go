@@ -6,6 +6,7 @@ type Cacher interface {
 	Get(key interface{}) (interface{}, error)
 	Del(key interface{})
 	Put(key, val interface{})
+	IsExist(key interface{}) bool
 }
 
 // 新建一个LazyCache
