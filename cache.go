@@ -12,8 +12,7 @@ type Cacher interface {
 // 新建一个LazyCache
 func NewLazyCache(newElemFunc func(key interface{}) (interface{}, error)) *LazyCache {
 	c := &LazyCache{
-		mx:          &sync.Mutex{},
-		memo:        make(map[interface{}]*lazyCacheElem),
+		memo:        &sync.Map{},
 		newElemFunc: newElemFunc,
 	}
 	return c
