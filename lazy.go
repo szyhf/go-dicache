@@ -25,7 +25,7 @@ type LazyCache struct {
 // 获取指定key的缓存，如果缓存不存在则调用重构方法尝试重构。
 func (this *LazyCache) Get(key interface{}) (interface{}, error) {
 	e, ok := this.memo.Load(key)
-	elem := e.(*lazyCacheElem)
+	var elem *lazyCacheElem
 	if !ok {
 		// 第一次访问，重建
 		elem = &lazyCacheElem{ready: make(chan struct{})}
@@ -36,6 +36,7 @@ func (this *LazyCache) Get(key interface{}) (interface{}, error) {
 
 		close(elem.ready)
 	} else {
+		elem = e.(*lazyCacheElem)
 		// 等待加载
 		<-elem.ready
 	}
